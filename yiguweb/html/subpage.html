@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../css/header.css"/>
+	<link href = "../css/iconfont.css" rel = "stylesheet"/>
+	<link rel="stylesheet" href="../css/nav1.css"/>
+	<link rel="stylesheet" href="../css/subpage.css"/>
+	<link rel="stylesheet" href="../css/banner.css"/>
+	<link rel="stylesheet" href="../css/footer.css"/>
+	<script src = "../js/jquery-1.11.3.js"></script>
+	<script src = "../js/header.js" ></script>
+	<script src = "../js/nav.js"></script>
+	<script src = "../js/banner.js"></script>
+	<script src = "../js/subpage.js"></script>
+	<script type = "text/javascript" src="../js/jquery.cookie.js"></script>
+</head>
+<body>
+	<div class = "headerbg">
+		<div class = "header">
+			<div class = "box-l">
+				<span>欢迎光临依谷网！</span>
+				<a href="#"></a>
+				<a href="#">收藏依谷网</a>
+			</div>
+			<div class = "box-r">
+				<ul>
+					<li><a>登录</a></li>
+					<li><a>免费注册</a></li>
+					<li><a>购物车</a></li>
+					<li id = "attention"><span></span><a>关注依谷网</a>
+						<p><img src="../img/wx.jpg" alt=""></p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class = "logobg">
+		<div class = "logo">
+			<div><img src = "../img/logo.png"></div>
+			<div>
+				<div class = "input">
+					<input id = "input-box" type="text" placeholder = "请输入商品名！" />
+					<a id = "search_btn">搜索</a>
+					<ul id = "ul1">
+						<!-- <li></li>
+						<li></li>
+						<li></li> -->
+					</ul>
+				</div>
+			</div>
+			<div>
+				<div class = "car">
+					<p id = "car_icon">
+						<span id = "sc_num">0</span>
+					</p>
+					<p id = "now">立即去结算<b class = "iconfont icon-arrRight-fill"></b></p>
+				</div>
+					<div id = "car-from">
+						<p>最新加入的商品</p>
+						<div>
+							<img src="../img/cart_k.png" alt=""/><br/>
+							<span>您的购物卡空空的，赶紧选购吧！</span>
+							
+						</div>
+						<div>共0件商品，共计￥0.00</div>
+					</div>
+				
+			</div>
+		</div>
+	</div>
+	<div class = "top_nav">
+		<div id = "list_btn" class = "list">全部商品分类<span class = "iconfont icon-arrLeft-fill"></span>
+			<ul class = "category" id ="optCard">
+				<li><b></b><a href="">水果蔬菜</a></li>
+				<li><b></b><a href="">肉禽蛋奶</a></li>
+				<li><b></b><a href="">粮油副食</a></li>
+				<li><b></b><a href="">零食酒饮</a></li>
+				<li><b></b><a href="">主题场景</a></li>
+				<li><b></b><a href="">这箱有礼</a></li>
+				<li><b></b><a href="">生活用品</a></li>
+				<img src="../img/menu_top.png" alt="">
+			</ul>
+			<div id = "listContent"></div>
+		</div>
+		<ul class = "nav-ul">
+			<li><a href="#">首页</a></li>
+			<li><a href="#">礼品卡券</a></li>
+			<li><a href="#">安心宅配</a></li>
+			<li><a href="#">特色预订</a></li>
+			<li><a href="#">企业定制</a></li>
+			<li><a href="#">活动专区</a></li>
+			<li><a href="#">食尚资讯</a></li>
+
+		</ul>
+	</div>
+	
+	<!-- <div class = "banner">
+		<ul id = "ban_pic">
+			<li><img src="../img/banner1.png" alt=""></li>
+			<li><img src="../img/banner2.jpg" alt=""></li>
+			<li><img src="../img/banner3.jpg" alt=""></li>
+			<li><img src="../img/banner4.jpg" alt=""></li>
+			<li><img src="../img/banner5.jpg" alt=""></li>
+		</ul>
+		<ul id = "ban_btn">
+			<li class = "active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+	
+		</ul>
+	</div> -->
+	<div id = "slideshow">
+			<ul id = "num">
+				<li class = "active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<div id = "pics">
+				<div><img src = "../img/banner6.jpg"/></div>
+				<div><img src = "../img/banner7.png"/></div>
+				<div><img src = "../img/banner8.jpg"/></div>
+				<div><img src = "../img/banner9.png"/></div>
+				<div><img src = "../img/banner10.jpg"/></div>
+			</div>
+		</div>
+
+		<div class = "filter">
+			<ul id = "filter">
+				<li>排序：</li>
+				<li>价格</li>
+				<li>筛选 : <input type="text" value="￥">-<input type="text" value = "￥" name=""/></li>
+				<li>
+					<input type="checkbox"/>限时优惠
+					<input type="checkbox"/>新品上市
+				</li>
+				<li>
+					<input type="text" value = "请输入商品名称！"/>
+					<a href="#">确定</a>
+				</li>
+				<li>
+					<p>共<b>54</b>件商品 <b>1</b>/16</p>
+					<p id = "pre"> < 上一页</p>
+					<p id = "next">下一页 > </p>
+				</li>
+			</ul>
+		</div>
+
+		<ul id = "pro_con">
+			
+		</ul>
+		<div class = "bottomBtn">
+			<p id = "last">尾页</p>
+			<p id = "nextb">下一页 ></p>
+			<p id = "preb">< 上一页</p>
+			<p id = "first">首页</p>
+			<p>共<span>54</span>件商品 共<span>4</span>页 <span>1</span>/16</p>
+		</div>
+	<div class = "infobg">
+			<div class = "info">
+				<ul>
+					<li>
+						<div class = "text">
+							<h3>次日到达</h3>
+							<p>当天16点前下单第二天送达</p>
+						</div>
+					
+					</li>
+					<li>
+						<div class = "text">
+							<h3>货到付款</h3>
+							<p>货到网银多种支付方式</p>
+						</div>
+					</li>
+					<li>
+						<div class = "text">
+							<h3>冷链配送</h3>
+							<p>基地到餐桌全程冷链</p>
+						</div>
+
+					</li>
+					<li>
+						<div class = "text">
+							<h3>24小时退换货</h3>
+							<p>专业解答 为您服务</p>
+						</div>
+					</li>
+					<li>
+						<div class = "text">
+							<h3>基地优选食材</h3>
+							<p>依谷更懂您的需求</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class = "bottom">
+			<div class = "b_l">
+				<div class = "first">
+					<h3>依谷有话说:</h3>
+					<div class = "box-b">
+						<div class = "pic"><img src="../img/info.jpg" alt=""></div>
+						<ul class = "content">
+							<li>
+								<h5>停电客户热线暂停服务的通知</h5>
+								<p>尊敬的依谷网客户：由于供电局8月20日10:00-20:00将停电对片区进行电路检修，期间订单可以照常提交，400110</p>
+							</li>
+							<li>
+								<h5>停电客户热线暂停服务的通知</h5>
+								<p>尊敬的依谷网客户：由于供电局8月20日10:00-20:00将停电对片区进行电路检修，期间订单可以照常提交，400110</p>
+							</li>
+							<li>
+								<h5>一粒龙滩珍珠李的爆款之路，千万广西农民的脱贫梦</h5>
+								<p>“今年的珍珠李丰收了，又能买个好价钱了，我上大学的费用不用愁了。” 家住广西天峨县八腊瑶乡的16岁姑娘任丽...</p>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+				<div class = "second">
+					<ul>
+						<li>
+						 	<h5>购物指南</h5>
+						 	<span>会员注册</span>
+						 	<span>套餐卡使用方法</span>
+						 	<span>谷穗卡使用方法</span>
+						 	<span>积分兑换</span>
+
+
+						</li>
+						<li>
+							<h5>付款方式</h5>
+						 	<span>线上支付</span>
+						 	<span>发票说明</span>
+						 	<span>货到付款</span>
+						 	<span>余额支付</span>
+
+						</li>
+						<li>
+							<h5>商品配送</h5>
+						 	<span>买家自取</span>
+						 	<span>配送时间</span>
+						 	<span>冷链配送</span>
+						 	<span>送货范围及费用</span>
+						</li>
+						<li>
+							<h5>售后服务</h5>
+						 	<span>签收与评价</span>
+						 	<span>常见问题</span>
+						 	<span>退换货说明</span>
+						 	<span>品质保障</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class = "b_r">
+				<div class = "us">
+					<img src="../img/us1.jpg" alt="">
+					<img src="../img/us2.jpg" alt="">
+					<img src="../img/us3.jpg" alt="">
+					<img src="../img/us4.jpg" alt="">
+				</div>
+				<div class = "code">
+					<div>
+						<p>关注依谷微信</p>
+						<img src="../img/weixin.jpg" alt="">
+					</div>
+					<div>
+						<p>客户端下载</p>
+						<img src="../img/client.jpg" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class = "footer">
+			<div class = "nav">
+				<a href="#">关于依谷</a>
+				<a href="">加入依谷</a>
+				<a href="">联系依谷</a>
+				<a href="">免责声明</a>
+				<a href="">友情链接</a>
+				<a href="">依谷资讯</a>
+				<a href="">网站地图</a>
+				<a href="">客服在线</a>
+			</div>
+			<div class = "cer">
+				<img src="../img/cer1.png" alt="">
+				<img src="../img/cer2.jpg" alt="">
+				<img src="../img/cer3.jpg" alt="">
+				<img src="../img/cer4.jpg" alt="">
+				<img src="../img/cer5.jpg" alt="">
+				<img src="../img/cer6.png" alt="">
+			</div>
+			<p>Copyright © 2010-2017 所有图片均受著作权保护，未经许可任何单位与个人不得使用、复制、转载、摘编，违者必究法律责任。</p>
+			<p><b>粤ICP备11016505号-9 </b>| All Rights Reserved 深圳依谷网版权所有 网络实名：<b>依谷网</b></p>
+		</div>
+
+</body>
+</html>

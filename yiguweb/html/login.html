@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0; padding:0;}
+		img{
+			width:100%;
+			height:100%;
+		}
+		a{
+			text-decoration: none;
+			color:#000;
+		}
+		ul li{
+			list-style:none;
+		}
+		.bg_pic{
+			position: fixed;
+			z-index: -10;
+		}
+		.loginBox{
+			width:502px;
+			height:600px;
+			background-color: #333;
+			opacity:0.3;
+			position:absolute;
+			top:50%;
+			left:50%;
+			margin-top:-331px;
+			margin-left:-291px;
+			padding:32px 40px;
+			z-index: -5; 
+			text-align: center;
+		}
+	 .loginBox1{
+			width:502px;
+			height:600px;
+			position:absolute;
+			top:50%;
+			left:50%;
+			margin-top:-331px;
+			margin-left:-291px;
+			padding:32px 40px;
+			z-index: 10;
+			color:#fff;
+
+		}
+		.loginBox1 .logo{
+			height:56px;
+			width:504px;
+
+		}
+		.loginBox1 .logo img{
+			width:146px;
+			height:56px;
+		}
+		.loginBox1 .text{
+			width:504px;
+			height:67px;
+			display: flex;
+			justify-content: space-between;
+		}
+		.loginBox1 .text div:nth-of-type(1){
+			width:77px;
+			height:67px;
+			line-height: 67px;
+			font-size:34px;
+		}
+		.loginBox1 .text div:nth-of-type(2){
+			width:130px;
+			font-size:15px;
+			margin-top:38px;
+
+		}
+		.loginBox1 .text div:nth-of-type(2) span{
+			color:#fe7223;
+		}
+		.loginBox1 form div{
+			width:504px;
+			height:54px;
+			margin-bottom:25px;
+		}
+		.loginBox1 form div .pic{
+			width:54px;
+			height:54px;
+			background-color: #aaaaaa;
+			text-align: center;
+			line-height: 54px;
+			float:left;
+		}
+		.loginBox1 form div .pic img{
+			width:25px;
+			height:25px;
+			margin-top:13px;
+		}
+		.loginBox1 form div:nth-of-type(1) input{
+			width:431px;
+			height:54px;
+			border:0;
+			outline:none;
+			padding-left:12px;
+		}
+		.loginBox1 form div:nth-of-type(2) input{
+			width:431px;
+			height:54px;
+			border:0;
+			outline:none;
+			padding-left:12px;
+		}
+		.loginBox1 form div:nth-of-type(3) input{
+			width:224px;
+			height:54px;
+			border:0;
+			outline:none;
+			padding-left:12px;
+		}
+		.loginBox1 form div:nth-of-type(3) p{
+			background-color: rgba(0,0,0,0);
+		}
+		#code{
+			width:150px;
+			height:54px;
+			float:right;
+			margin-right: 30px;
+			background:url(../img/codebg.jpg);
+			line-height:54px;
+			font-size:35px;
+			text-align: center;
+
+		}
+		.loginBox1 form div:nth-of-type(4){
+			line-height:54px;
+			font-size:17px;
+		}
+		.loginBox1 form div:nth-of-type(4) p{
+			float:right;
+			font-size:15px;
+			color:#fff;
+			margin-top:10px;
+		}
+		.loginBox1 form div:last-of-type{
+			color:#000;
+			background-color: #fd7400;
+			text-align:center;
+			line-height: 54px;
+			margin-bottom:0;
+		}
+		.loginBox1 form div:last-of-type a{
+			display: block;
+		}
+		.loginBox1 .cooperation{
+			width:500px;
+			height:52px;
+
+		}
+		.loginBox1 .icons{
+			width:500px;
+			height:90px;
+			text-align: center;
+		}
+		.loginBox1 .icons img{
+			width:66px;
+			height:66px;
+		}
+	</style>
+	<script src = "../js/jquery-1.11.1.js"></script>
+	<script>
+	$(function(){
+		$("#login").click(function(){
+			var data = "status=login&userID=" + $("#username").val() + "&password=" + $("#password").val();
+
+			$.ajax({
+				method:"post",
+				url:"http://datainfo.duapp.com/shopdata/userinfo.php",
+				data:data,
+				success:function(data){
+					if(data == 0){
+						alert("用户名不存在");
+					}else if(data == 2){
+						alert("用户名密码不符");
+					}else{
+						alert("登录成功");
+					}
+				}
+			})
+		})
+		$("#code").html(autoCode(4));
+		$("#code").click(function(){
+			$(this).html(autoCode(4)).css("color",randomColor());
+		})
+	})
+	function randomColor(){
+		return "rgba(" + parseInt(Math.random()*255) +"," + parseInt(Math.random()*255) + "," +parseInt(Math.random()*255)  + ",1)";
+	}
+	function autoCode(n){
+		var arr = [];
+		for(var i=0;i<n;i++){
+			var num = parseInt(Math.random()*100);
+			if(num >=0 && num<=9){
+				arr.push(num);
+			}else if(num>=10 && num<=35){
+				arr.push(String.fromCharCode(num + 87));
+			}else if(num>=65 && num<=90){
+				arr.push(String.fromCharCode(num));
+			}else{
+				i--;
+				continue;
+			}
+		}
+		return arr.join("");
+	}
+	</script>
+</head>
+<body>
+	<div class = "bg_pic">
+		<img src="../img/admin-bg.jpg" alt=""/>
+	</div>
+	<div class = "loginBox"></div>
+	<div class = "loginBox1">
+			<div class = "logo">
+				<img src="../img/logo_login.png" alt="">
+			</div>
+			<div class = "text">
+				<div>登录</div>
+				<div>还没有账号？<span>注册</span></div>
+			</div>
+			<form>
+				<div>
+					<p class = "pic"><img src="../img/password.png" alt=""></p>
+					<input id = "username" type="text" placeholder="手机号/用户名"/>
+				</div>
+				<div>
+					<p class = "pic"><img src="../img/password.png" alt=""></p>
+					<input id ="password" type="text" placeholder="密码"/>
+				</div>
+				<div>
+					<p class = "pic">验证码</p>
+					<input type="text" placeholder="验证码"/>
+					<p id = "code"></p>
+				</div>
+				<div>
+					<input type="checkbox" checked/>记住我
+					<p>忘记密码？</p>
+				</div>
+				<div id = "login"><a href = "#">登录</a></div>
+			</form>
+			<div class = "cooperation">
+				<img src="../img/admin-login-san.png" alt=""/>
+			</div>
+			<div class = "icons">
+				<a href = "#"><img src="../img/login_sina.png" alt=""/></a>
+				<a href = "#"><img src="../img/login_qq.png" alt=""/></a>
+				<a href = "#"><img src="../img/login_weixin.png" alt=""/></a>
+			</div>
+	</div>		
+
+</body>
+</html>

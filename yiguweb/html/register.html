@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0; padding:0;}
+		img{
+			width:100%;
+			height:100%;
+		}
+		ul li{
+			list-style:none;
+		}
+		.bg_pic{
+			position: fixed;
+			z-index: -10;
+		}
+		.registerBox{
+			width:500px;
+			height:604px;
+			background-color: #fff;
+			position:absolute;
+			top:50%;
+			left:50%;
+			margin-top:-302px;
+			margin-left:-290px;
+			padding:0 42px;
+		}
+		.registerBox p img{
+			width:160px;
+			height:65px;
+			margin-top:32px;
+		}
+		.registerBox form {
+			margin-top:15px;
+		}
+		.registerBox form ul li{
+			height:52px;
+			position:relative;
+			left:0px;
+			top:0px;
+		}
+		.registerBox form ul li .input{
+			width:428px;
+			height:52px;
+			border:1px solid #e8e8e8;
+		}
+		.registerBox form ul li:nth-of-type(2) div{
+			width:276px;
+			float:left;
+		}
+		.registerBox form ul .info{
+			height:25px;
+			width:500px;
+			opacity:0;
+
+		}
+		.registerBox form ul .info img{
+			width:20px;
+			height:20px;
+			margin-top:3px;
+			margin-left:-56px;
+			float:left;
+		}
+		.registerBox form ul .info b{
+			display: block;
+			height:25px;
+			line-height:25px;
+			width:450px;
+			float:left;
+			margin-left:25px;
+			font-size:15px;
+			color:#cecece;
+
+		}
+		.registerBox form ul li:nth-of-type(2) a{
+			display: block;
+			width:120px;
+			height:52px;
+			line-height: 50px;
+			text-align: center;
+			color:#fff;
+			background-color: #fd7400;
+			float:left;
+			margin-left:10px;
+			text-decoration: none;
+		}
+		.registerBox form ul li:nth-of-type(2) div input{
+			width:200px;
+		}
+		.registerBox form ul li .passPic{
+			width:46px;
+			height:46px;
+			position:absolute;
+			right:22px;
+			top:0;
+			background:url(../img/login_right.png) no-repeat 5px -37px;
+			display:none; 
+		}
+
+		.registerBox form ul li div p{
+			width:56px;
+			height:52px;
+			background:#aaaaaa;
+			float:left;
+			text-align: center;
+			line-height: 52px;
+		}
+		.registerBox form ul li div p img {
+			width:25px;
+			height:25px;
+			margin-top:13px;
+		}
+		.registerBox form ul li div input{
+			width:352px;
+			height:32px;
+			border:0;
+			outline:none;
+			padding:10px;
+		}
+		.text{
+			height:37px;
+			margin-top:20px;
+		}
+		.text p:nth-of-type(1){
+			width:80px;
+			height:37px;
+			line-height:37px;
+			font-size:37px;
+			float:left;
+		}
+		.text p:nth-of-type(2){
+			width:96px;
+			height:17px;
+			float:right;
+			margin-top:18px;
+		}
+		.text p:nth-of-type(2) span{
+			color:#fd7400;
+		}
+		.agreement{
+			color:#4b2427;
+			font-weight: bold;
+			margin-top:10px;
+		}
+		.agreement a{
+			text-decoration: underline;
+		}
+		#registerBtn{
+			width:500px;
+			height:55px;
+			color:#fff;
+			text-align: center;
+			line-height: 55px;
+			background-color:#fd7400;
+			border: 0;
+			margin-top:10px; 
+		}
+	</style>
+	<script src = "../js/jquery-1.11.1.js"></script>
+	<script>
+	$(function(){
+		$("#smartphone").blur(function(){
+			if($(this).val().length<11){
+				$("#tel_s").css("opacity","1");
+				$("#p1").css("display","block").css("backgroundPosition","5px -37px");
+				/*$("#truepw").html("请输入正确的手机号码");*/
+			}else if(/\D/g.test($(this).val())){
+				$("#tel_s").css("opacity","1");
+				$("#p1").css("display","block").css("backgroundPosition","5px -37px");
+				/*$("#truepw").html("请输入正确的手机号码");*/
+			}else{
+				$("#tel_s").css("opacity","0");
+				$("#p1").css("display","block").css("backgroundPosition","5px 5px");
+			}
+		})
+
+		$("#writer_pw").blur(function(){
+			if($(this).val().length <6 || $(this).val().length>16){
+				$("#passw").css("opacity","1");
+				$("#p2").css("display","block").css("backgroundPosition","5px -37px");
+
+			}else if(/\W/ig.test($(this).val())){
+				$("#passw").css("opacity","1");
+				$("#p2").css("display","block").css("backgroundPosition","5px -37px");
+			}else{
+				$("#passw").css("opacity","0");
+				$("#p2").css("display","block").css("backgroundPosition","5px 5px");
+			}
+		})
+
+		$("#confirm").blur(function(){
+			if($(this).val().length == 0){
+				$("#confirm_pw").css("opacity","1");
+				$("#confirm_pw").find("b").html("请输入确认密码");
+				$("#p3").css("display","block").css("backgroundPosition","5px -37px");
+			}else if($(this).val() != $("#writer_pw").val()){
+				$("#confirm_pw").css("opacity","1");
+				$("#confirm_pw").find("b").html("两次密码输入不一致，请重新输入");
+				$("#p3").css("display","block").css("backgroundPosition","5px -37px");
+			}else{
+				$("#confirm_pw").css("opacity","0");
+				$("#p3").css("display","block").css("backgroundPosition","5px 5px");
+			}
+		})
+
+		$("#registerBtn").click(function(){
+			var data = "status=register&userID=" + $("#smartphone").val() + "&password=" + $("#writer_pw").val();
+			$.ajax({
+				method:"post",
+				url:"http://datainfo.duapp.com/shopdata/userinfo.php",
+				data:data,
+				success:function(data){
+					if(data == 0){
+						alert("用户名重名");
+					}else if(data == 2){
+						alert("数据库报错");
+					}else{
+						alert("注册成功");
+					}
+				}
+			})
+		})
+
+		
+
+
+	})
+
+	</script>
+</head>
+<body>
+	<div class = "bg_pic">
+		<img src="../img/admin-re-bg.jpg" alt=""/>
+	</div>
+	<div class = "registerBox">
+		<p><img src="../img/logo_login.png" alt=""></p>
+		<div class = "text">
+			<p>注册</p>
+			<p>已有账号<span>登录</span></p>
+		</div>
+		<form action="">
+			<ul>
+				<li>
+					<div class = "input">
+						<p><img src="../img/telephon.png" alt=""></p>
+						<input id = "smartphone" type="text" placeholder="请输入手机号" maxlength="11" />
+					</div>
+					<div class = "passPic" id = "p1"></div>
+				</li>
+				<p class = "info" id = "tel_s">
+					<img src="../img/login_error.png" alt=""/>
+					<b id = "truepw">请输入正确的手机号码</b>
+				</p>
+				<li>
+					<div>
+						<p><img src="../img/cod.png" alt=""></p>
+						<input type="text" placeholder="请输短信验证码"/>
+					</div>
+					<a href="#">发送验证码</a>
+				</li>
+				<p class = "info">
+					
+				</p>
+				<li>
+					<div class = "input">
+						<p><img src="../img/password.png" alt=""></p>
+						<input id = "writer_pw" type="text" placeholder="请输入密码" />
+					</div>
+					<div class = "passPic" id = "p2"></div>
+				</li>
+				<p class = "info" id = "passw">
+					<img src="../img/login_error.png" alt=""/>
+					<b id = "truepw">密码为6-16位的数字，字母或下划线组成</b>
+				</p>
+				<li>
+					<div class = "input">
+						<p><img src="../img/password.png" alt=""></p>
+						<input id = "confirm" type="text" placeholder="请输确认密码" />
+					</div>
+					<div class = "passPic" id = "p3"></div>
+				</li>
+				<p class = "info" id = "confirm_pw">
+					<img src="../img/login_error.png" alt=""/>
+					<b></b>
+				</p>
+			</ul>
+			<p class = "agreement">
+				<input type="checkbox" checked>  同意<a>依谷网服务协议</a>
+			</p>
+			<input id = "registerBtn" type="button" value = "完成"/>
+		</form>
+	</div>
+	
+</body>
+</html>
